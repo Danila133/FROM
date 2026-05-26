@@ -1,4 +1,8 @@
-import { APP_DESCRIPTION, APP_NAME, APP_TAGLINE } from "@/config/app";
+import {
+  APP_NAME,
+  FARCASTER_DESCRIPTION,
+  FARCASTER_SUBTITLE,
+} from "@/config/app";
 import {
   CANONICAL_SITE_URL,
   getAppHeroUrl,
@@ -31,8 +35,8 @@ function buildMiniappMetadata(origin: string) {
     splashImageUrl: getAppSplashUrl(origin),
     splashBackgroundColor: FARCASTER_SPLASH_BACKGROUND_COLOR,
     webhookUrl: `${origin}/api/webhook`,
-    description: APP_DESCRIPTION,
-    subtitle: APP_TAGLINE,
+    description: FARCASTER_DESCRIPTION,
+    subtitle: FARCASTER_SUBTITLE,
     primaryCategory: "social",
     tags: ["base", "miniapp"],
     noindex: true,
