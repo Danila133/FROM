@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="FROM">
+  <rect width="512" height="512" fill="#120b1e"/>
+  <defs>
+    <linearGradient
+      id="from-mark"
+      x1="148"
+      y1="106"
+      x2="148"
+      y2="434"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop offset="0%" stop-color="#8700B8"/>
+      <stop offset="38%" stop-color="#653CA2"/>
+      <stop offset="50%" stop-color="#E8DFF5"/>
+      <stop offset="58%" stop-color="#B49BDA"/>
+      <stop offset="100%" stop-color="#31007A"/>
+    </linearGradient>
+  </defs>
+  <path
+    fill="url(#from-mark)"
+    d="
+      M 148 106
+      H 232
+      L 420 128
+      L 400 210
+      H 232
+      V 252
+      L 368 252
+      L 350 304
+      H 232
+      V 390
+      L 282 436
+      L 232 420
+      H 148
+      V 106
+      Z
+    "
+  />
+</svg>
