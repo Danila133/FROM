@@ -39,7 +39,7 @@ function buildMiniappMetadata(origin: string) {
     subtitle: FARCASTER_SUBTITLE,
     primaryCategory: "social",
     tags: ["base", "miniapp"],
-    noindex: true,
+    noindex: false,
   } as const;
 }
 
