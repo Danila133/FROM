@@ -2,7 +2,7 @@
   "id": "from",
   "name": "FROM",
   "short_name": "FROM",
-  "description": "GM, deploy, and badge NFTs on Base",
+  "description": "GM, deploy & collect badges for $F on Base",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",

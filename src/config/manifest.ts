@@ -1,4 +1,4 @@
-import { APP_DESCRIPTION, APP_NAME } from "@/config/app";
+import { APP_DESCRIPTION, APP_NAME, APP_TAGLINE } from "@/config/app";
 import {
   CANONICAL_SITE_URL,
   getAppHeroUrl,
@@ -7,15 +7,17 @@ import {
   getAppSplashUrl,
 } from "@/config/appAssets";
 
-/** Farcaster domain verification — fill after deploying your domain */
+/** Farcaster domain verification — from-blue.vercel.app */
 export const FARCASTER_ACCOUNT_ASSOCIATION = {
-  header: "",
-  payload: "",
-  signature: "",
+  header:
+    "eyJmaWQiOjc3NzY2MywidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweEM1NDU2Q0E5NmEwNTlhNmUzZTlmQ0ZCMDcxMTQxRjMyMjBDM2QwZDQifQ",
+  payload: "eyJkb21haW4iOiJmcm9tLWJsdWUudmVyY2VsLmFwcCJ9",
+  signature:
+    "/ivJLcMjiz4C1r52Qe/xCjqgzZxWf15BpZQ7+JkzB59wT4ew31JGP/qtufk0SQkp2fKgPCVbgDScASGc9twMMBw=",
 } as const;
 
 export const FARCASTER_BUTTON_TITLE = "Check this out";
-export const FARCASTER_SPLASH_BACKGROUND_COLOR = "#120b1e";
+export const FARCASTER_SPLASH_BACKGROUND_COLOR = "#eeccff";
 
 function buildMiniappMetadata(origin: string) {
   return {
@@ -30,7 +32,7 @@ function buildMiniappMetadata(origin: string) {
     splashBackgroundColor: FARCASTER_SPLASH_BACKGROUND_COLOR,
     webhookUrl: `${origin}/api/webhook`,
     description: APP_DESCRIPTION,
-    subtitle: APP_NAME,
+    subtitle: APP_TAGLINE,
     primaryCategory: "social",
     tags: ["base", "miniapp"],
     noindex: true,
