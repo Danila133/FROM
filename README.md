@@ -1,4 +1,4 @@
-# FROM 1234567
+# FROM 12345678
 
 Base mini app: GM, token deploy, and milestone badge NFTs.
 
