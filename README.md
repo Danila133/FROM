@@ -1,4 +1,4 @@
-# FROM 1
+# FROM 12
 
 Base mini app: GM, token deploy, and milestone badge NFTs.
 
