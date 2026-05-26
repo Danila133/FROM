@@ -9,6 +9,7 @@ import { buildReferralLink, POINTS_PER_REFERRAL } from "@/config/referral";
 import { useHubStats } from "@/hooks/useHubStats";
 import { useReferralRegistration } from "@/hooks/useReferralRegistration";
 import { ReferralShareButtons } from "@/components/ReferralShareButtons";
+import { copyToClipboard } from "@/lib/copyToClipboard";
 import { truncateAddress } from "@/lib/leaderboard";
 
 export function ReferralApp() {
@@ -31,6 +32,7 @@ export function ReferralApp() {
   } = useReferralRegistration();
 
   const [copied, setCopied] = useState(false);
+  const [copyError, setCopyError] = useState(false);
 
   const referralLink = useMemo(
     () => (address ? buildReferralLink(address) : ""),
@@ -44,13 +46,17 @@ export function ReferralApp() {
 
   const handleCopy = useCallback(async () => {
     if (!referralLink) return;
-    try {
-      await navigator.clipboard.writeText(referralLink);
+    setCopyError(false);
+
+    const ok = await copyToClipboard(referralLink);
+    if (ok) {
       setCopied(true);
       window.setTimeout(() => setCopied(false), 2000);
-    } catch {
-      setCopied(false);
+      return;
     }
+
+    setCopyError(true);
+    window.setTimeout(() => setCopyError(false), 3000);
   }, [referralLink]);
 
   return (
@@ -110,9 +116,15 @@ export function ReferralApp() {
             <p className="uni-label">Your referral link</p>
             {address ? (
               <>
-                <p className="uni-mono mt-2 break-all text-xs text-[var(--uni-text-secondary)]">
-                  {referralLink}
-                </p>
+                <input
+                  type="text"
+                  readOnly
+                  value={referralLink}
+                  aria-label="Your referral link"
+                  onFocus={(event) => event.currentTarget.select()}
+                  onClick={(event) => event.currentTarget.select()}
+                  className="uni-mono mt-2 w-full rounded-xl border border-[var(--uni-border)] bg-[var(--uni-bg-inset)] px-3 py-2.5 text-xs text-[var(--uni-text-secondary)] outline-none"
+                />
                 <button
                   type="button"
                   className="uni-btn uni-btn-primary mt-4 w-full"
@@ -120,6 +132,12 @@ export function ReferralApp() {
                 >
                   {copied ? "Copied!" : "Copy link"}
                 </button>
+                {copyError && (
+                  <p className="uni-caption mt-2 text-center text-[var(--uni-critical)]">
+                    Could not copy — tap the link above to select, then copy
+                    manually.
+                  </p>
+                )}
                 <div className="mt-4 border-t border-[var(--uni-border)] pt-4">
                   <ReferralShareButtons referralLink={referralLink} />
                 </div>
