@@ -8,9 +8,9 @@ import { APP_NAME } from "@/config/app";
 
 const links = [
   { href: "/", label: "App" },
-  { href: "/referral", label: "Referral" },
   { href: "/badges", label: "Badges" },
   { href: "/leaderboard", label: "Leaders" },
+  { href: "/referral", label: "Referral" },
 ] as const;
 
 export function AppNav() {
