@@ -4,7 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useAccount, useChainId, useSwitchChain } from "wagmi";
 
-import { APP_DESCRIPTION, APP_NAME } from "@/config/app";
+import { APP_TAGLINE } from "@/config/app";
 import { AppNav } from "@/components/AppNav";
 import { ConnectWallet } from "@/components/ConnectWallet";
 import { DeployPanel } from "@/components/DeployPanel";
@@ -33,7 +33,6 @@ export function HomeApp() {
     deployCount,
     freeDeployAvailable,
     deployFeeOnChain,
-    points,
     refreshStats,
   } = useHubStats();
 
@@ -44,19 +43,14 @@ export function HomeApp() {
     <>
       <AppNav />
 
-      <header className="uni-card px-5 py-5 text-center">
-        <p className="uni-eyebrow">
-          {inMiniApp ? "Farcaster" : "Web"} · Base
+      <header className="uni-card px-4 py-2.5 text-center">
+        <p className="uni-caption">
+          {inMiniApp ? "Farcaster" : "Web"} · Base · {APP_TAGLINE}
         </p>
-        <h1 className="uni-title mt-2 text-3xl">{APP_NAME}</h1>
-        <p className="uni-body mt-2 text-sm">{APP_DESCRIPTION}</p>
-        <div className="uni-airdrop-callout mt-4">
-          <p className="uni-airdrop-text">
-            More points = Bigger{" "}
-            <span className="uni-text-accent font-semibold">$F</span> airdrop.
-            Simple as that.
-          </p>
-        </div>
+        <p className="uni-airdrop-text mt-1 text-xs">
+          More points = bigger{" "}
+          <span className="uni-text-accent font-semibold">$F</span> airdrop
+        </p>
       </header>
 
       {!hubReady && (
@@ -69,8 +63,8 @@ export function HomeApp() {
         </div>
       )}
 
-      <div className="uni-card px-4 py-5">
-        <ConnectWallet />
+      <div className="uni-card px-3 py-2.5">
+        <ConnectWallet compact />
       </div>
 
       {hubReady && isConnected && !wrongChain && <ReferralInviteBanner />}
@@ -87,17 +81,8 @@ export function HomeApp() {
       )}
 
       {hubReady && isConnected && !wrongChain && (
-        <div className="uni-card px-4 py-3 text-center">
-          <p className="uni-label">Total points</p>
-          <p className="uni-mono mt-1 text-2xl font-semibold uni-text-accent">
-            {points?.toString() ?? "0"}
-          </p>
-        </div>
-      )}
-
-      {hubReady && isConnected && !wrongChain && (
-        <div className="uni-card p-4">
-          <div className="uni-tabs mb-4">
+        <div className="uni-card p-3">
+          <div className="uni-tabs mb-2">
             <button
               type="button"
               className={`uni-tab ${tab === "gm" ? "uni-tab-active" : ""}`}

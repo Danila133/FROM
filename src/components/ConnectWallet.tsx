@@ -13,7 +13,11 @@ import { useFarcasterMiniApp } from "@/hooks/useFarcasterMiniApp";
 
 const WALLET_USER_DISCONNECTED_KEY = `${APP_SLUG}_wallet_disconnected`;
 
-export function ConnectWallet() {
+type ConnectWalletProps = {
+  compact?: boolean;
+};
+
+export function ConnectWallet({ compact = false }: ConnectWalletProps) {
   const { address, isConnected, isConnecting, isReconnecting, connector } =
     useAccount();
   const { connect, isPending } = useConnect();
@@ -50,6 +54,30 @@ export function ConnectWallet() {
   }
 
   if (isConnected && !showPicker) {
+    if (compact) {
+      return (
+        <div className="flex w-full items-center gap-2">
+          <div className="uni-card-inset min-w-0 flex-1 px-2.5 py-1.5">
+            <p className="uni-mono truncate text-sm font-medium text-[var(--uni-text)]">
+              {user?.username && inMiniApp
+                ? `@${user.username}`
+                : `${address?.slice(0, 6)}…${address?.slice(-4)}`}
+            </p>
+            <p className="uni-label truncate text-[0.65rem]">
+              {connector?.name ?? "Wallet"}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => handleDisconnect({ openPicker: true })}
+            className="uni-btn uni-btn-secondary uni-btn-sm shrink-0 px-3"
+          >
+            Change
+          </button>
+        </div>
+      );
+    }
+
     return (
       <div className="flex w-full flex-col items-center gap-4">
         {user?.username && inMiniApp && (
@@ -82,10 +110,12 @@ export function ConnectWallet() {
   }
 
   return (
-    <div className="flex w-full flex-col gap-3">
-      <p className="uni-label text-center">
-        {showPicker ? "Select a wallet" : "Connect wallet"}
-      </p>
+    <div className={`flex w-full flex-col ${compact ? "gap-2" : "gap-3"}`}>
+      {!compact && (
+        <p className="uni-label text-center">
+          {showPicker ? "Select a wallet" : "Connect wallet"}
+        </p>
+      )}
 
       {inMiniApp && farcasterConnector && (
         <button
