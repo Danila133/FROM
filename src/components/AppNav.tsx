@@ -16,11 +16,11 @@ export function AppNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="uni-card mb-1 flex items-center justify-between gap-2 px-3 py-2">
+    <nav className="uni-card mb-1 flex items-center gap-2 px-3 py-2">
       <Link href="/" className="shrink-0 no-underline" aria-label="FROM home">
         <AppLogo size={32} />
       </Link>
-      <div className="uni-tabs">
+      <div className="uni-tabs min-w-0 flex-1">
         {links.map((link) => {
           const active =
             link.href === "/"

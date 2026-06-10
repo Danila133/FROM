@@ -70,7 +70,8 @@ export function ConnectWallet({ compact = false }: ConnectWalletProps) {
           <button
             type="button"
             onClick={() => handleDisconnect({ openPicker: true })}
-            className="uni-btn uni-btn-inline uni-btn-secondary uni-btn-sm shrink-0"
+            className="uni-btn uni-btn-ghost uni-btn-sm shrink-0 whitespace-nowrap px-2.5 py-1"
+            style={{ width: "auto" }}
           >
             Change
           </button>
