@@ -265,6 +265,10 @@ body {
   border-radius: var(--uni-radius-md);
 }
 
+.uni-btn-inline {
+  width: auto;
+}
+
 .uni-btn-pill {
   border-radius: var(--uni-radius-pill);
 }

@@ -56,8 +56,8 @@ export function ConnectWallet({ compact = false }: ConnectWalletProps) {
   if (isConnected && !showPicker) {
     if (compact) {
       return (
-        <div className="flex w-full items-center gap-2">
-          <div className="uni-card-inset min-w-0 flex-1 px-2.5 py-1.5">
+        <div className="uni-card-inset flex w-full items-center gap-2 overflow-hidden px-2.5 py-1.5">
+          <div className="min-w-0 flex-1">
             <p className="uni-mono truncate text-sm font-medium text-[var(--uni-text)]">
               {user?.username && inMiniApp
                 ? `@${user.username}`
@@ -70,7 +70,7 @@ export function ConnectWallet({ compact = false }: ConnectWalletProps) {
           <button
             type="button"
             onClick={() => handleDisconnect({ openPicker: true })}
-            className="uni-btn uni-btn-secondary uni-btn-sm shrink-0 px-3"
+            className="uni-btn uni-btn-inline uni-btn-secondary uni-btn-sm shrink-0"
           >
             Change
           </button>

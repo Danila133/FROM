@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { AppLogo } from "@/components/AppLogo";
-import { APP_NAME } from "@/config/app";
 
 const links = [
   { href: "/", label: "App" },
@@ -18,11 +17,8 @@ export function AppNav() {
 
   return (
     <nav className="uni-card mb-1 flex items-center justify-between gap-2 px-3 py-2">
-      <Link href="/" className="flex min-w-0 items-center gap-2.5 no-underline">
-        <AppLogo size={36} />
-        <span className="uni-heading truncate text-base text-[var(--uni-text)]">
-          {APP_NAME}
-        </span>
+      <Link href="/" className="shrink-0 no-underline" aria-label="FROM home">
+        <AppLogo size={32} />
       </Link>
       <div className="uni-tabs">
         {links.map((link) => {
