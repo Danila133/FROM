@@ -10,10 +10,6 @@ cp .env.example .env.local
 npm run dev
 ```
 
-- **/** — GM + Deploy (Jumper-style UI)
-- **/referral** — Personal referral link, invite counter, +200 pts per friend
-- **/badges** — Mint NFT badges for GM, Deploy, points, and leaderboard rank
-- **/leaderboard** — All participants ranked by points
 
 ## Deploy contracts (Base)
 
